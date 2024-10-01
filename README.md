@@ -1,3 +1,16 @@
+# autores 
+| nombre        | foto                                                                                      | sitio web                              |
+|---------------|-------------------------------------------------------------------------------------------|---------------------------------|
+| andy          | ![@ANDYAXCEL46445](https://avatars.githubusercontent.com/u/159587029?s=400&u=3ce457a076ac0a274e6ac737437534f9a11fd841&v=4) | [sitio web de andyaxceldcc👀👺💀](https://www.andyai.com.ng/) |
+| Joe           | ![joeclasid](https://avatars.githubusercontent.com/u/12518330?v=4)                       | [Sitio de ThioJoe🐱‍👤](https://www.thiojoe.com/) |
+| sofiadparamo  | ![sofiadparamo](https://avatars.githubusercontent.com/u/7455707?v=4)                    | [sitio web de mi amor😍😘🥰🤩](https://iamsofi.dev)          |
+
+
+
+
+
+
+
 ## <span style="color: blue;">💼 Error de Permisos en Google Cloud Translation API</span>
 
 ### <span style="color: blue;">Descripción del Problema</span>
