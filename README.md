@@ -1,38 +1,33 @@
+## <span style="color: blue;">💼 Error de Permisos en Google Cloud Translation API</span>
 
-
-
-
-
-## <span style="color: blue;"> 💼 Error de Permisos en Google Cloud Translation API
-
-### Descripción del Problema
+### <span style="color: blue;">Descripción del Problema</span>
 > **Error:**
 > 
 > `raise HttpError(resp, content, uri=self.uri)`  
 > `googleapiclient.errors.HttpError: <HttpError 403 when requesting https://translation.googleapis.com/v3beta1/projects/sasa:translateText?alt=json returned "Cloud IAM permission 'cloudtranslate.generalModels.predict' denied.". Details: "Cloud IAM permission 'cloudtranslate.generalModels.predict' denied."`
-</span>
-### Solución del Problema de Permisos
 
-1. **Verificar el rol de IAM**:
+### <span style="color: blue;">Solución del Problema de Permisos</span>
+
+1. <span style="color: blue;">**Verificar el rol de IAM**:</span>
    - Asegúrate de que el usuario o la cuenta de servicio que estás utilizando tenga los permisos adecuados.
    - Necesitarás asignar un rol que incluya el permiso `cloudtranslate.generalModels.predict`. Los roles comunes que incluyen este permiso son:
      - `Cloud Translation API User`
      - `Editor`
 
-2. **Asignar permisos**:
+2. <span style="color: blue;">**Asignar permisos**:</span>
    - Ve a la consola de Google Cloud: [Google Cloud Console](https://console.cloud.google.com/)
    - Dirígete a **IAM & Admin** > **IAM**.
    - Busca el usuario o cuenta de servicio y haz clic en **Editar**.
    - Agrega el rol necesario.
 
-3. **Verificar la habilitación de la API**:
+3. <span style="color: blue;">**Verificar la habilitación de la API**:</span>
    - Asegúrate de que la API de Cloud Translation esté habilitada para tu proyecto.
    - En la consola, ve a **API & Services** > **Dashboard** y verifica que la API esté activada.
 
-4. **Revisar la facturación**:
+4. <span style="color: blue;">**Revisar la facturación**:</span>
    - Asegúrate de que tu proyecto tenga la facturación habilitada, ya que algunas API requieren que esto esté activo para funcionar correctamente.
 
-5. **Probar la solicitud nuevamente**:
+5. <span style="color: blue;">**Probar la solicitud nuevamente**:</span>
 
 
 
