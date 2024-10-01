@@ -1,4 +1,6 @@
 ### errores
+<iframe width="1060" height="3515"  src="https://www.youtube.com/watch?v=uaHmtJrZRdM&t=7s" frameborder="0" allowfullscreen></iframe>
+
 
 # Error de Permisos en Google Cloud Translation API
 
