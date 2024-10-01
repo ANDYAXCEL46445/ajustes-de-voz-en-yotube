@@ -1,3 +1,5 @@
+[![Video explicativo](https://img.youtube.com/vi/snX5YyflrGw/0.jpg)](https://www.youtube.com/watch?v=snX5YyflrGw&t=10s) 
+🐱‍👤🐱‍🏍de varios idiomas en el ajuste
 ### AÑADE -Sentí curiosidad por esas traducciones y experimenté comparándolas con las de algunos modelos disponibles en Hugging Face:
 
 Modelo	Descargas del mes pasado	Traducción
