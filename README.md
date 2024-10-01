@@ -1,5 +1,28 @@
+### errores
 
-# Mi Proyecto
+# Error de Permisos en Google Cloud Translation API
+
+## Descripción del Problema   raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://translation.googleapis.com/v3beta1/projects/sasa:translateText?alt=json returned "Cloud IAM permission 'cloudtranslate.generalModels.predict' denied.". Details: "Cloud IAM permission 'cloudtranslate.generalModels.predict' denied. "
+
+
+Al intentar utilizar la API de Google Cloud Translation, se presenta el siguiente error:
+
+![Error de Permisos](https://user-images.githubusercontent.com/69730626/212182082-af7fe8e8-d697-4e31-8288-9b8e42ed269f.png)
+
+**Mensaje de error:** 1
+00:00:07,000 --> 00:02:06,000
+Martin Luther King Jr.
+
+2
+00:02:08,000 --> 00:05:07,000
+Day is a federal holiday in the United States,
+
+3
+00:05:07,000 --> 00:11:01,000
+observed on the third Monday of January each year, in
+honor of Martin Luther King Jr.
+
 
 factos y errores :
 
