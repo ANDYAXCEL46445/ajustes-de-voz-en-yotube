@@ -1,8 +1,4 @@
-# Reproductor de Video
 
-Puedes ver el video aquí:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uaHmtJrZRdM" frameborder="0" allowfullscreen></iframe>
 
 
 
