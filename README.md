@@ -1,102 +1,100 @@
 # Auto Synced & Translated Dubs
- Automatically translates the text of a video into chosen languages based on a subtitle file, and also uses AI voice to dub the video, while keeping it properly synced to the original video using the subtitle's timings.
+Traduce automáticamente el texto de un video a los idiomas elegidos basándose en un archivo de subtítulos y también utiliza voz de IA para doblar el video, mientras lo mantiene sincronizado correctamente con el video original utilizando los tiempos de los subtítulos.
  
 ### How It Works
-If you already have a human-made SRT subtitles file for a video, this will:
-1. Use Google Cloud/DeepL to automatically translate the text, and create new translated SRT files
-2. Use the timings of the subtitle lines to calculate the correct duration of each spoken audio clip
-3. Create text-to-speech audio clips of the translated text (using more realistic neural voices)
-4. Stretch or shrink the translated audio clip to be exactly the same length as the original speech.
-    - Optional (On by Default): Instead of stretching the audio clips, you can instead do a second pass at synthesizing each clip through the API using the proper speaking speed calculated during the first pass. This slightly improves audio quality.
-    - If using Azure TTS, this entire step is not necessary because it allows specifying the desired duration of the speech before synthesis
-5. Builds the audio track by inserting the new audio clips at their correct time points. Therefore the translated speech will remain perfectly in sync with the original video.
-    
-### More Key Features
-- Creates translated versions of the SRT subtitle file
-- Batch processing of multiple languages in sequence
-- Config files to save translation, synthesis, and language settings for re-use
-- Allows detailed control over how the text is translated and synthesized
-   - Including: A "Don't Translate" phrase list, a manual translation list, a phoneme pronunciation list, and more
+Si ya tiene un archivo de subtítulos SRT creado por humanos para un video, esto hará lo siguiente:
+1. Utilizará Google Cloud/DeepL para traducir automáticamente el texto y crear nuevos archivos SRT traducidos
+2. Utilizará los tiempos de las líneas de subtítulos para calcular la duración correcta de cada clip de audio hablado
+3. Creará clips de audio de texto a voz del texto traducido (usando voces neuronales más realistas)
+4. Estirará o encogerá el clip de audio traducido para que tenga exactamente la misma duración que el discurso original.
+- Opcional (activado de manera predeterminada): en lugar de estirar los clips de audio, puede realizar una segunda pasada para sintetizar cada clip a través de la API usando la velocidad de habla adecuada calculada durante la primera pasada. Esto mejora levemente la calidad del audio.
+- Si usa Azure TTS, todo este paso no es necesario porque permite especificar la duración deseada del discurso antes de la síntesis
+5. Construye la pista de audio insertando los nuevos clips de audio en sus puntos de tiempo correctos. Por lo tanto, el discurso traducido permanecerá perfectamente sincronizado con el video original.
+### Más funciones clave
+- Crea versiones traducidas del archivo de subtítulos SRT
+- Procesamiento por lotes de varios idiomas en secuencia
+- Archivos de configuración para guardar la traducción, la síntesis y la configuración del idioma para su reutilización
+- Permite un control detallado sobre cómo se traduce y sintetiza el texto
+- Incluye: una lista de frases "No traducir", una lista de traducción manual, una lista de pronunciación de fonemas y más
 
-### Additional Included Tools
-- `TrackAdder.py`: Adds all language audio tracks to a video file
-   - With ability to merge a sound effects track into each language track
-- `TitleTranslator.py`: Translates a YouTube video Title and Description to multiple languages
-- `TitleDescriptionUpdater.py`: Uses YouTube API to update the localized titles and descriptions for a YouTube video using output of TitleTranslator.py
-- `SubtitleTrackRemover.py`: Uses YouTube API to remove a specific audio track from a YouTube video
-- `TranscriptTranslator.py`: Translates an entire transcript of text
-- `TranscriptAutoSyncUploader.py`: Using YouTube API, it lets you upload a transcript for a video, then have YouTube sync the text to the video
-   - You can also upload multiple pre-translated transcripts and have YouTube sync it, assuming the language is supported
-- `YouTube_Synced_Translations_Downloader.py`: Using YouTube API, translate the captions of a video into the specified languages, then download the auto-synced subtitle file created by YouTube
+### Herramientas adicionales incluidas
+- `TrackAdder.py`: agrega pistas de audio de todos los idiomas a un archivo de video
+- Con la capacidad de fusionar una pista de efectos de sonido en cada pista de idioma
+- `TitleTranslator.py`: traduce el título y la descripción de un video de YouTube a varios idiomas
+- `TitleDescriptionUpdater.py`: usa la API de YouTube para actualizar los títulos y las descripciones localizados de un video de YouTube usando la salida de TitleTranslator.py
+- `SubtitleTrackRemover.py`: usa la API de YouTube para eliminar una pista de audio específica de un video de YouTube
+- `TranscriptTranslator.py`: traduce una transcripción completa de texto
+- `TranscriptAutoSyncUploader.py`: usando la API de YouTube, le permite cargar una transcripción para un video y luego hacer que YouTube sincronice el texto con el video
+- También puede cargar múltiples transcripciones pretraducidas y hacer que YouTube las sincronice, suponiendo que el idioma sea compatible
+- `YouTube_Synced_Translations_Downloader.py`: usando la API de YouTube, traduzca la transcripción de un video y luego haga que YouTube sincronice el texto con el video
+subtítulos de un video en los idiomas especificados y luego descargue el archivo de subtítulos sincronizado automáticamente creado por YouTube
 ----
 
-# Instructions
+# Instrucciones
 
-### External Requirements:
-- ffmpeg must be installed (https://ffmpeg.org/download.html)
+### Requisitos externos:
+- ffmpeg debe estar instalado (https://ffmpeg.org/download.html)
 
-### Optional External Tools:
-- Optional: Instead of ffmpeg for audio stretching, you could use the program'rubberband'
-  - I've actually found ffmpeg works better, but I'll still leave the option for rubberband if you want.
-  - If using Rubberband, yoou'll need the rubberband binaries. Specifically on [this page]((https://breakfastquay.com/rubberband/), find the download link for "Rubber Band Library v3.3.0 command-line utility" (Pick the Windows or MacOS version depending). Then extract the archive to find:
-     - On Windows: rubberband.exe, rubberband-r3.exe, and sndfile.dll
-     - On MacOS: rubberband, rubberband-r3
-  - Doesn't need to be installed, just put the above mentioned files in the same directory as main.py
+### Herramientas externas opcionales:
+- Opcional: en lugar de ffmpeg para estirar el audio, puedes usar el programa 'rubberband'
+- De hecho, descubrí que ffmpeg funciona mejor, pero dejaré la opción de rubberband si lo deseas.
+- Si usas Rubberband, necesitarás los binarios de Rubberband. Específicamente en [esta página]((https://breakfastquay.com/rubberband/), busca el enlace de descarga para "Utilidad de línea de comandos de la biblioteca Rubber Band v3.3.0" (elige la versión de Windows o MacOS según corresponda). Luego, extrae el archivo para encontrar:
+- En Windows: rubberband.exe, rubberband-r3.exe y sndfile.dll
+- En MacOS: rubberband, rubberband-r3
+- No necesita instalarse, solo coloca los archivos mencionados anteriormente en el mismo directorio que main.py
 
-## Setup & Configuration
-1. Download or clone the repo and install the requirements using `pip install -r requirements.txt`
-   - I wrote this using Python 3.9 but it will probably work with earlier versions too
-2. Install the programs mentioned in the 'External Requirements' above.
-3. Setup your Google Cloud (See Wiki), Microsoft Azure API access and/or DeepL API Token, and set the variables in `cloud_service_settings.ini`. 
-   - I recommend Azure for the TTS voice synthesizing because they have newer and better voices in my opinion, and in higher quality (Azure supports sample rate up to 48KHz vs 24KHz with Google). 
-   - Google Cloud is faster, cheaper and supports more languages for text translation, but you can also use DeepL.
-4. Set up your configuration settings in `config.ini`. The default settings should work in most cases, but read through them especially if you are using Azure for TTS because there are more applicable options you may want to customize.
-   - This config includes options such as the ability to skip text translation, setting formats and sample rate, and using two-pass voice synthesizing
-5. Finally open `batch.ini` to set the language and voice settings that will be used for each run. 
-   - In the top `[SETTINGS]` section you will enter the path to the original video file (used to get the correct audio length), and the original subtitle file path
-   - Also you can use the `enabled_languages` variable to list all the languages that will be translated and synthesized at once. The numbers will correspond to the `[LANGUAGE-#]` sections in the same config file. The program will process only the languages listed in this variable.
-   - This lets you add as many language presets as you want (such as the preferred voice per language), and can choose which languages you want to use (or not use) for any given run.
-   - Make sure to check supported languages and voices for each service in their respective documentation.
+## Configuración y configuración
+1. Descargue o clone el repositorio e instale los requisitos usando `pip install -r requirements.txt`
+- Escribí esto usando Python 3.9 pero probablemente también funcione con versiones anteriores
+2. Instale los programas mencionados en los 'Requisitos externos' anteriores.
+3. Configure su Google Cloud (consulte la Wiki), el acceso a la API de Microsoft Azure y/o el token de API de DeepL, y configure las variables en `cloud_service_settings.ini`.
+- Recomiendo Azure para la síntesis de voz TTS porque, en mi opinión, tienen voces más nuevas y mejores, y de mayor calidad (Azure admite una frecuencia de muestreo de hasta 48 KHz frente a los 24 KHz de Google).
+- Google Cloud es más rápido, más económico y admite más idiomas para la traducción de texto, pero también puede usar DeepL.
+4. Configure sus ajustes de configuración en `config.ini`. Los ajustes predeterminados deberían funcionar en la mayoría de los casos, pero léalos, especialmente si está usando Azure para TTS, porque hay más opciones aplicables que puede personalizar.
+- Esta configuración incluye opciones como la capacidad de omitir la traducción de texto, configurar formatos y frecuencia de muestreo, y usar la síntesis de voz de dos pasadas
+5. Finalmente, abre `batch.ini` para configurar el idioma y la configuración de voz que se usarán para cada ejecución.
+- En la sección superior `[SETTINGS]`, ingresarás la ruta al archivo de video original (usado para obtener la duración de audio correcta) y la ruta del archivo de subtítulos original
+- También puedes usar la variable `enabled_languages` para enumerar todos los idiomas que se traducirán y sintetizarán a la vez. Los números corresponderán a las secciones `[LANGUAGE-#]` en el mismo archivo de configuración. El programa procesará solo los idiomas enumerados en esta variable.
+- Esto te permite agregar tantos ajustes preestablecidos de idioma como quieras (como la voz preferida por idioma) y puedes elegir qué idiomas quieres usar (o no usar) para cualquier ejecución determinada.
+- Asegúrate de verificar los idiomas y voces compatibles para cada servicio en su respectiva documentación.
 
-## Usage Instructions
-- **How to Run:** After configuring the config files, simply run the main.py script using `python main.py` and let it run to completion
-   - Resulting translated subtitle files and dubbed audio tracks will be placed in a folder called 'output'
-- **Optional:** You can use the separate `TrackAdder.py` script to automatically add the resulting language tracks to an mp4 video file. Requires ffmpeg to be installed.
-   - Open the script file with a text editor and change the values in the "User Settings" section at the top.
-   - This will label the tracks so the video file is ready to be uploaded to YouTube. HOWEVER, the multiple audio tracks feature is only available to a limited number of channels. You will most likely need to contact YouTube creator support to ask for access, but there is no guarantee they will grant it.
-- **Optional:** You can use the separate `TitleTranslator.py` script if uploading to YouTube, which lets you enter a video's Title and Description, and the text will be translated into all the languages enabled in `batch.ini`. They wil be placed together in a single text file in the "output" folder.
+## Instrucciones de uso
+- **Cómo ejecutar:** Después de configurar los archivos de configuración, simplemente ejecute el script main.py usando `python main.py` y déjelo ejecutar hasta que se complete
+- Los archivos de subtítulos traducidos y las pistas de audio dobladas resultantes se colocarán en una carpeta llamada 'output'
+- **Opcional:** Puede usar el script `TrackAdder.py` independiente para agregar automáticamente las pistas de idioma resultantes a un archivo de video mp4. Requiere que ffmpeg esté instalado.
+- Abra el archivo de script con un editor de texto y cambie los valores en la sección "Configuración de usuario" en la parte superior.
+- Esto etiquetará las pistas para que el archivo de video esté listo para ser cargado a YouTube. SIN EMBARGO, la función de pistas de audio múltiples solo está disponible para una cantidad limitada de canales. Lo más probable es que deba comunicarse con el soporte para creadores de YouTube para solicitar acceso, pero no hay garantía de que lo otorguen.
+- **Opcional:** Puedes usar el script `TitleTranslator.py` independiente si subes el video a YouTube, que te permite ingresar el título y la descripción de un video, y el texto se traducirá a todos los idiomas habilitados en `batch.ini`. Se colocarán juntos en un solo archivo de texto en la carpeta "output".
 
 ----
 
-## Additional Notes:
-- This works best with subtitles that do not remove gaps between sentences and lines.
-- For now the process only assumes there is one speaker. However, if you can make separate SRT files for each speaker, you could generate each TTS track separately using different voices, then combine them afterwards.
-- It supports both Google Translate API and DeepL for text translation, and Google, Azure, and Eleven Labs for Text-To-Speech with neural voices.
-- This script was written with my own personal workflow in mind. That is:
-    - I use [**OpenAI Whisper**](https://github.com/openai/whisper) to transcribe the videos locally, then use [**Descript**](https://www.descript.com/) to sync that transcription and touch it up with corrections.
-    - Then I export the SRT file with Descript, which is ideal because it does not just butt the start and end times of each subtitle line next to each other. This means the resulting dub will preserve the pauses between sentences from the original speech. If you use subtitles from another program, you might find the pauses between lines are too short.
-    - The SRT export settings in Descript that seem to work decently for dubbing are *150 max characters per line*, and *1 max line per card*.
-- The "Two Pass" synthesizing feature (can be enabled in the config) will drastically improve the quality of the final result, but will require synthesizing each clip twice, therefore doubling any API costs.
-
-### Currently Supported Text-To-Speech Services:
+## Notas adicionales:
+- Esto funciona mejor con subtítulos que no eliminan los espacios entre oraciones y líneas.
+- Por ahora, el proceso solo supone que hay un hablante. Sin embargo, si puede crear archivos SRT separados para cada hablante, podría generar cada pista TTS por separado usando diferentes voces y luego combinarlas después.
+- Admite tanto la API de Google Translate como DeepL para traducción de texto, y Google, Azure y Eleven Labs para conversión de texto a voz con voces neuronales.
+- Este script se escribió teniendo en cuenta mi propio flujo de trabajo personal. Es decir:
+- Uso [**OpenAI Whisper**](https://github.com/openai/whisper) para transcribir los videos localmente, luego uso [**Descript**](https://www.descript.com/) para sincronizar esa transcripción y retocarla con correcciones.
+- Luego, exporto el archivo SRT con Descript, que es ideal porque no solo junta los tiempos de inicio y fin de cada línea de subtítulo. Esto significa que el doblaje resultante conservará las pausas entre las oraciones del discurso original. Si usa subtítulos de otro programa, es posible que las pausas entre las líneas sean demasiado breves.
+- Las configuraciones de exportación SRT en Descript que parecen funcionar decentemente para el doblaje son *150 caracteres como máximo por línea* y *1 línea como máximo por tarjeta*.
+- La función de síntesis "Two Pass" (se puede habilitar en la configuración) mejorará drásticamente la calidad del resultado final, pero requerirá sintetizar cada clip dos veces, por lo que duplicará los costos de API.
+### Servicios de conversión de texto a voz compatibles actualmente:
 - Microsoft Azure
 - Google Cloud
 - Eleven Labs
 
-### Currently Supported Translation Services:
+### Servicios de traducción compatibles actualmente:
 - Google Translate
 - DeepL
 
-## For more information on supported languages by service:
-- [Google Cloud Translation Supported Languages](https://cloud.google.com/translate/docs/languages)
-- [Google Cloud Text-to-Speech Supported Languages](https://cloud.google.com/text-to-speech/docs/voices)
-- [Azure Text-to-Speech Supported Languages](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech)
-- [DeepL Supported Languages](https://www.deepl.com/docs-api/translating-text/request/)
+## Para obtener más información sobre los idiomas compatibles por servicio:
+- [Idiomas compatibles con Google Cloud Translation](https://cloud.google.com/translate/docs/languages)
+- [Idiomas compatibles con la conversión de texto a voz de Google Cloud](https://cloud.google.com/text-to-speech/docs/voices)
+- [Idiomas compatibles con la conversión de texto a voz de Azure](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech)
+- [Idiomas compatibles con DeepL](https://www.deepl.com/docs-api/translating-text/request/)
 
 ----
 
-### For Result Examples See: [Examples Wiki Page](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Examples)
-### For Planned Features See: [Planned Features Wiki Page](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Planned-Features)
-### For Google Cloud Project Setup Instructions See: [Instructions Wiki Page](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Instructions:-Obtaining-an-API-Key)
-### For Microsoft Azure Setup Instructions See: [Azure Instructions Wiki Page](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Instructions:-Microsoft-Azure-Setup)
-
+### Para ver ejemplos de resultados, consulte: [Página wiki de ejemplos](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Examples)
+### Para ver las funciones planificadas, consulte: [Página wiki de funciones planificadas](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Planned-Features)
+### Para ver las instrucciones de configuración del proyecto de Google Cloud, consulte: [Página wiki de instrucciones](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Instructions:-Obtaining-an-API-Key)
+### Para ver las instrucciones de configuración de Microsoft Azure, consulte: [Página wiki de instrucciones de Azure](https://github.com/ThioJoe/Auto-Synced-Translated-Dubs/wiki/Instructions:-Microsoft-Azure-Setup)
