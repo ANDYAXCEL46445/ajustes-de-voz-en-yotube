@@ -1,3 +1,14 @@
+
+# Mi Proyecto
+
+factos y errores :
+
+![Problem with Azure](https://private-user-images.githubusercontent.com/133063174/364478836-f6a2dab4-2efd-43f0-80fb-f6d8cee6329e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjc4MDQ3MzMsIm5iZiI6MTcyNzgwNDQzMywicGF0aCI6Ii8xMzMwNjMxNzQvMzY0NDc4ODM2LWY2YTJkYWI0LTJlZmQtNDNmMC04MGZiLWY2ZDhjZWU2MzI5ZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMDAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTAwMVQxNzQwMzNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZDdlMzdlZmQxNDY1ZDY4ZTY4NWE4NDNkYjE3MjhiZDBlMmQ4NWIyZTFkYzk0OTlkMjdlMzhlMDcwZjJkODE2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.cbYKaiEL0Wk3ZmS9WPne-Dk4OZo0kIEjel4OwIfc7uc)
+
+
+
+
+
 **Video demonstration** (click the picture):
 
 [![Video explicativo](https://img.youtube.com/vi/uaHmtJrZRdM/0.jpg)](https://www.youtube.com/watch?v=uaHmtJrZRdM&t=5s)
