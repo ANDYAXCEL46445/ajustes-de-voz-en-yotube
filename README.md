@@ -1,4 +1,6 @@
-[![Video explicativo](https://img.youtube.com/vi/snX5YyflrGw/0.jpg)](https://www.youtube.com/watch?v=snX5YyflrGw&t=10s) 
+**Video demonstration** (click the picture):
+
+[![ajuste de varios idiomas  demo](https://i.imgur.com/8lFUlgz.png)]([https://www.youtube.com/watch?v=uaHmtJrZRdM&t=5s]()
 🐱‍👤🐱‍🏍de varios idiomas en el ajuste
 ### AÑADE -Sentí curiosidad por esas traducciones y experimenté comparándolas con las de algunos modelos disponibles en Hugging Face:
 
