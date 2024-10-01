@@ -3,10 +3,28 @@
 
 
 
-# Error de Permisos en Google Cloud Translation API
+### Solución del Problema de Permisos
 
-## Descripción del Problema   raise HttpError(resp, content, uri=self.uri)
-googleapiclient.errors.HttpError: <HttpError 403 when requesting https://translation.googleapis.com/v3beta1/projects/sasa:translateText?alt=json returned "Cloud IAM permission 'cloudtranslate.generalModels.predict' denied.". Details: "Cloud IAM permission 'cloudtranslate.generalModels.predict' denied. "
+1. **Verificar el rol de IAM**:
+   - Asegúrate de que el usuario o la cuenta de servicio que estás utilizando tenga los permisos adecuados.
+   - Necesitarás asignar un rol que incluya el permiso `cloudtranslate.generalModels.predict`. Los roles comunes que incluyen este permiso son:
+     - `Cloud Translation API User`
+     - `Editor`
+
+2. **Asignar permisos**:
+   - Ve a la consola de Google Cloud: [Google Cloud Console](https://console.cloud.google.com/)
+   - Dirígete a **IAM & Admin** > **IAM**.
+   - Busca el usuario o cuenta de servicio y haz clic en **Editar**.
+   - Agrega el rol necesario.
+
+3. **Verificar la habilitación de la API**:
+   - Asegúrate de que la API de Cloud Translation esté habilitada para tu proyecto.
+   - En la consola, ve a **API & Services** > **Dashboard** y verifica que la API esté activada.
+
+4. **Revisar la facturación**:
+   - Asegúrate de que tu proyecto tenga la facturación habilitada, ya que algunas API requieren que esto esté activo para funcionar correctamente.
+
+5. **Probar la solicitud nuevamente**:
 
 
 Al intentar utilizar la API de Google Cloud Translation, se presenta el siguiente error:
