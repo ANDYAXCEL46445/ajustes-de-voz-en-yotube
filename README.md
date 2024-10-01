@@ -1,3 +1,21 @@
+#AÑADE -Sentí curiosidad por esas traducciones y experimenté comparándolas con las de algunos modelos disponibles en Hugging Face:
+
+Modelo	Descargas del mes pasado	Traducción
+Helsinki-PNL/opus-mt-es-en	270.778	Que un juego para niños tenga como objetivo estafar a un pobre aldeano es bastante curioso.
+salesken/traduccion-espanol-y-portugues-a-ingles	11,447	Es bastante curioso que el juego de un niño tenga el efecto de apuñalar a un pobre aldeano.
+Helsinki-NLP/opus-mt-tc-big-cat_oci_spa-en	55	Que un juego para niños tenga como objetivo estafar a un pobre aldeano es bastante curioso.
+Curiosamente, parece que el modelo con menos descargas obtuvo la mejor traducción. Tal vez sea porque es un modelo grande y, por lo tanto, utiliza más recursos a cambio de obtener mejores traducciones, creo.
+
+Me pregunto si es el orden de las palabras ( Wikipedia en inglés , Wikipedia en español ) de la fase original lo que dificulta la traducción automática. No hablo español, lo estudié un poco pero no lo hablo, sin embargo este orden me parece un poco extraño. Tal vez los datos de entrenamiento de esos modelos tenían relativamente pocas fases en este orden. Si lo reescribes como "Es bastante curioso que un juego para niños tenga como logro estafar a un pobre aldeano" - que es un orden que por alguna razón me parece más natural - entonces obtienes las siguientes traducciones:
+
+Modelo	Traducción
+Google Translate	Es bastante curioso que un juego para niños tenga como objetivo estafar a un pobre aldeano.
+L profundo	Es bastante curioso que un juego infantil tenga como objetivo estafar a un pobre aldeano.
+Helsinki-PNL/opus-mt-es-en	Es bastante curioso que un juego para niños tenga como objetivo estafar a un pobre aldeano.
+salesken/traduccion-espanol-y-portugues-a-ingles	Es bastante curioso que un juego infantil tenga el efecto de apuñalar a un pobre aldeano.
+Helsinki-NLP/opus-mt-tc-big-cat_oci_spa-en	Es bastante curioso que un juego para niños tenga como logro defraudar a un pobre aldeano.
+Ahora parece que DeepL funciona mucho mejor (mientras que Helsinki-NLP/opus-mt-es-en todavía funciona mal). Probablemente DeepL necesite mejorar su conjunto de entrenamiento para evitar este tipo de problemas.
+
 # Auto Synced & Translated Dubs
 Traduce automáticamente el texto de un video a los idiomas elegidos basándose en un archivo de subtítulos y también utiliza voz de IA para doblar el video, mientras lo mantiene sincronizado correctamente con el video original utilizando los tiempos de los subtítulos.
  
